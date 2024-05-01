@@ -1,0 +1,43 @@
+"use server"
+
+import { redirect } from "next/navigation"
+
+export async function create(prevState: any, formData: FormData){
+
+    const date = formData.get("data");
+    const partes = String(date).split('-');
+    formData.set("data", partes[2] + '/' + partes[1] + '/' + partes[0]);
+    
+    const data = {
+        valor: formData.get("valor"),
+        tipo: formData.get("tipo"),
+        categoria: {
+            id: formData.get("produto")
+        },
+        data: formData.get("data"),
+    }
+
+    const options = {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+
+    }
+    const resp = await fetch("http://localhost:8080/venda", options)
+
+    if (resp.ok){
+        redirect("/vendas")
+    }
+
+    if(resp.status == 400){
+        const messages = await resp.json()
+
+        return {
+            message_valor: messages.find( (m: any) => m.campo == "valor")?.mensagem || '',
+            message_data: messages.find( (m: any) => m.campo == "data")?.mensagem || '',
+        }
+    }
+    
+}
