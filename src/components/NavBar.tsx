@@ -10,7 +10,7 @@ export function NavBar(props: NavBarProps){
 
     return (
         <nav className="flex flex-col justify-between items-center px-8 py-4 bg-slate-900 w-48">
-            <h1 className="text-4xl font-bold mb-6">Fintrack</h1>
+            <h1 className="text-4xl font-bold mb-6">Soft Sales</h1>
             <ul className="flex flex-col gap-6">
                 <li className={active == "home" ? classActive : ""}>
                     <Link href="/">Home</Link>
