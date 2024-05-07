@@ -92,7 +92,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-4">
       <NavBar active="home"/>
-      <h2 className="text-2xl font-bold">Home</h2>
+      <h2 className="text-2xl font-bold">Dashboard</h2>
 
        <section className="grid grid-flow-col-dense  gap-5">
         { totais.map( t => <CardStats {...t} /> ) }

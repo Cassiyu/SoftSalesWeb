@@ -9,7 +9,7 @@ export default async function Produtos() {
   const produtos: Array<Produto> = await get();
 
   return (
-    <main className="flex min-h-screen">
+    <main className="flex min-h-screen flex-col items-center">
       <NavBar active="produtos" />
       <section className="flex flex-col gap-3 bg-slate-900 p-6 mt-4 rounded min-w-[500px]">
         <div className="flex justify-between">
